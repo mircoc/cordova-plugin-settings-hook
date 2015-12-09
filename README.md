@@ -1,5 +1,7 @@
 # cordova-plugin-settings-hook
-Cordova plugin helpful to modify Android and iOS settings with config.xml parameters. Based on the work of Devin Jett and Diego Netto on generator-ionic
+Cordova plugin helpful to modify Android and iOS settings with config.xml parameters.
+
+Based on the work of [Devin Jett](https://github.com/djett) and [Diego Netto](https://github.com/diegonetto) on [generator-ionic](https://github.com/diegonetto/generator-ionic) with hook [update_platform_config.js](https://github.com/diegonetto/generator-ionic/blob/master/templates/hooks/after_prepare/update_platform_config.js)
 
 This hook updates platform configuration files based on preferences and config-file data defined in config.xml.
 Currently only the AndroidManifest.xml and IOS *-Info.plist file are supported.
