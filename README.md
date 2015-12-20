@@ -2,6 +2,10 @@
 Cordova plugin helpful to modify Android and iOS settings with config.xml parameters.
 
 Based on the work of [Devin Jett](https://github.com/djett) and [Diego Netto](https://github.com/diegonetto) on [generator-ionic](https://github.com/diegonetto/generator-ionic) with hook [update_platform_config.js](https://github.com/diegonetto/generator-ionic/blob/master/templates/hooks/after_prepare/update_platform_config.js)
+Removed dependency to other npm packages, so it can be installed as a Cordova plugin adding it to your config.xml:
+```
+<plugin name="cordova-plugin-settings-hook" spec="https://github.com/mircoc/cordova-plugin-settings-hook" />
+```
 
 This hook updates platform configuration files based on preferences and config-file data defined in config.xml.
 Currently only the AndroidManifest.xml and IOS *-Info.plist file are supported.
@@ -23,9 +27,13 @@ Config Files
 7.  If a unique config-file contains multiples of the same elements (other than uses-permssion elements which are
     selected by by the uses-permission name attribute), the last defined element will be retrieved.
 
-## Examples:
+## Examples of config.xml:
 
-### AndroidManifest.xml
+You have to add some of the following configuration options inside your Cordova project _config.xml_ in the <platform> tag for Android or iOS.
+
+### Android
+
+These configuration will update the generated AndroidManifest.xml for Android platform.
 
 NOTE: For possible manifest values see (http://developer.android.com/guide/topics/manifest/manifest-intro.html)
 
@@ -54,7 +62,9 @@ NOTE: For possible manifest values see (http://developer.android.com/guide/topic
 </platform>
 ```
 
-### *-Info.plist
+### iOS
+
+These configuration will update the generated *-Info.plist for iOS platform.
 
 ```
 <platform name="ios">
@@ -68,6 +78,18 @@ NOTE: For possible manifest values see (http://developer.android.com/guide/topic
     </config-file>
 </platform>
 ```
+## Execution
+
+After you added the plugin you can execute `cordova prepare` to change the platform config.
+```
+$ cordova prepare
+Processing settings for platform: android
+Wrote AndroidManifest.xml: ../platforms/android/AndroidManifest.xml
+Processing settings for platform: ios
+Wrote iOS Plist: ../platforms/ios/GamifiveBrazil/MyApp-Info.plist
+
+```
+
 
 ## Note
 NOTE: Currently, items aren't removed from the platform config files if you remove them from config.xml.
