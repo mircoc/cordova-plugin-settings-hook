@@ -194,6 +194,10 @@ module.exports = function(context) {
                     type = 'preference';
 
                 preferences.forEach( function (preference) {
+                    // check if there are specific configuration to map to config for this platform
+                    if (!preferenceMappingData[platform]) {
+                        return;
+                    }
                     var prefMappingData = preferenceMappingData[platform][preference.attrib.name],
                         target,
                         prefData;
