@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-settings-hook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cordova plugin helpful to modify Android and iOS settings with config.xml parameters.\n    \tBased on the work of Devin Jett and Diego Netto on generator-ionic",
   "cordova": {
     "id": "cordova-plugin-settings-hook",
@@ -20,5 +20,5 @@
   "bugs": {
     "url": "https://github.com/mircoc/cordova-plugin-settings-hook/issues"
   },
-  "homepage": "https://github.com/mircoc/cordova-plugin-settings-hook#readme"
+  "homepage": "https://github.com/mircoc/cordova-plugin-settings-hook"
 }
