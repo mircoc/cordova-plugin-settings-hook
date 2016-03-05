@@ -1,0 +1,12 @@
+language: objective-c
+
+install:
+  - npm install -g cordova
+
+script:
+  # creating a simple HelloWorld project to make sure plugin links
+  - cordova create hello com.example.hello HelloWorld
+  - cd hello
+  - cordova platform add ios
+  - cordova plugin add cordova-plugin-settings-hook
+  - cordova build ios
