@@ -1,10 +1,14 @@
+[![Build Status](https://travis-ci.org/mircoc/cordova-plugin-settings-hook.svg?branch=master)](https://travis-ci.org/mircoc/cordova-plugin-settings-hook)
+[![npm version](https://badge.fury.io/js/cordova-plugin-settings-hook.svg)](https://badge.fury.io/js/cordova-plugin-settings-hook)
+[![npm](https://img.shields.io/npm/dm/cordova-plugin-settings-hook.svg)](https://www.npmjs.com/package/cordova-plugin-settings-hook)
+
 # cordova-plugin-settings-hook
 Cordova plugin helpful to modify Android and iOS settings with config.xml parameters.
 
 Based on the work of [Devin Jett](https://github.com/djett) and [Diego Netto](https://github.com/diegonetto) on [generator-ionic](https://github.com/diegonetto/generator-ionic) with hook [update_platform_config.js](https://github.com/diegonetto/generator-ionic/blob/master/templates/hooks/after_prepare/update_platform_config.js)
 Removed dependency to other npm packages, so it can be installed as a Cordova plugin adding it to your config.xml:
 ```
-<plugin name="cordova-plugin-settings-hook" spec="https://github.com/mircoc/cordova-plugin-settings-hook" />
+<plugin name="cordova-plugin-settings-hook" spec="~0.2.0" />
 ```
 
 This hook updates platform configuration files based on preferences and config-file data defined in config.xml.
