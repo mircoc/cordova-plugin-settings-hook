@@ -65,6 +65,15 @@ NOTE: For possible manifest values see (http://developer.android.com/guide/topic
     </config-file>
 </platform>
 ```
+#### Android config-file requirements
+
+If you specify something in the ```<config-file target="AndroidManifest.xml"...```, you need to add android namespace to the xml root, like this:
+
+```
+<widget xmlns:android="http://schemas.android.com/apk/res/android" ... >
+```
+If don't do this you'll get a build error: ```error: Error parsing XML: unbound prefix```.
+
 
 ### iOS
 
