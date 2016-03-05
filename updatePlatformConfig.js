@@ -89,7 +89,7 @@ module.exports = function(context) {
                 'android-launchMode': {target: 'AndroidManifest.xml', parent: 'application/activity[@android:name=\'CordovaApp\']', destination: 'android:launchMode'},
                 'android-theme': {target: 'AndroidManifest.xml', parent: 'application/activity[@android:name=\'CordovaApp\']', destination: 'android:theme'},
                 'android-windowSoftInputMode': {target: 'AndroidManifest.xml', parent: 'application/activity[@android:name=\'CordovaApp\']', destination: 'android:windowSoftInputMode'},
-				'android-applicationName': {target: 'AndroidManifest.xml', parent: 'application', destination: 'android:name'}
+                'android-applicationName': {target: 'AndroidManifest.xml', parent: 'application', destination: 'android:name'}
             },
             'ios': {}
         };
@@ -301,13 +301,18 @@ module.exports = function(context) {
                             childEl = new et.Element(item.destination);
                             parentEl.append(childEl);
                         }
-
-                        // copy all config.xml data except for the generated _id property
-                        data.forEach( function (prop, propName) {
-                            if(propName !== '_id') {
-                                childEl[propName] = prop;
+                        
+                        if (typeof data === "object") {
+                            // copy all config.xml data except for the generated _id property                            
+                            for (var key in data) {
+                                // skip loop if the property is from prototype
+                                if (!data.hasOwnProperty(key)) continue;
+                                
+                                if(key !== '_id') {
+                                    childEl[key] = data[key];
+                                }
                             }
-                        });
+                        }
                     }
                 });
 
