@@ -55,6 +55,7 @@ NOTE: For possible manifest values see (http://developer.android.com/guide/topic
     <preference name="android-manifest-hardwareAccelerated" value="false" />
     <preference name="android-configChanges" value="orientation" />
     <preference name="android-theme" value="@android:style/Theme.Black.NoTitleBar" />
+    <preference name="android-label" value="MyCustomLabel" />
     <config-file target="AndroidManifest.xml" parent="/*">
         <supports-screens
             android:xlargeScreens="false"
