@@ -85,10 +85,10 @@ module.exports = function(context) {
                 'android-manifest-hardwareAccelerated': {target: 'AndroidManifest.xml', parent: './', destination: 'android:hardwareAccelerated'},
                 'android-installLocation': {target: 'AndroidManifest.xml', parent: './', destination: 'android:installLocation'},
                 'android-activity-hardwareAccelerated': {target: 'AndroidManifest.xml', parent: 'application', destination: 'android:hardwareAccelerated'},
-                'android-configChanges': {target: 'AndroidManifest.xml', parent: 'application/activity[@android:name=\'CordovaApp\']', destination: 'android:configChanges'},
-                'android-launchMode': {target: 'AndroidManifest.xml', parent: 'application/activity[@android:name=\'CordovaApp\']', destination: 'android:launchMode'},
-                'android-theme': {target: 'AndroidManifest.xml', parent: 'application/activity[@android:name=\'CordovaApp\']', destination: 'android:theme'},
-                'android-windowSoftInputMode': {target: 'AndroidManifest.xml', parent: 'application/activity[@android:name=\'CordovaApp\']', destination: 'android:windowSoftInputMode'},
+                'android-configChanges': {target: 'AndroidManifest.xml', parent: "__cordovaMainActivity__", destination: 'android:configChanges'},
+                'android-launchMode': {target: 'AndroidManifest.xml', parent: "__cordovaMainActivity__", destination: 'android:launchMode'},
+                'android-theme': {target: 'AndroidManifest.xml', parent: "__cordovaMainActivity__", destination: 'android:theme'},
+                'android-windowSoftInputMode': {target: 'AndroidManifest.xml', parent: "__cordovaMainActivity__", destination: 'android:windowSoftInputMode'},
                 'android-applicationName': {target: 'AndroidManifest.xml', parent: 'application', destination: 'android:name'}
             },
             'ios': {}
@@ -193,7 +193,7 @@ module.exports = function(context) {
             parsePreferences: function (configData, platform) {
                 var preferences = this.getPreferences(platform),
                     type = 'preference';
-
+                
                 preferences.forEach( function (preference) {
                     // check if there are specific configuration to map to config for this platform
                     if (!preferenceMappingData[platform]) {
@@ -271,15 +271,29 @@ module.exports = function(context) {
                 }
             },
 
+            getMainAndroidActivityNode: function(rootManifest) {
+                var cordovaApp = "application/activity/intent-filter/action[@android:name='android.intent.action.MAIN']/../..";
+                var tempNode = rootManifest.find(cordovaApp);
+                return tempNode;
+            }, 
+
             // Updates the AndroidManifest.xml target file with data from config.xml
             updateAndroidManifest: function (targetFile, configItems) {
                 var tempManifest = platformConfig.parseElementtreeSync(targetFile),
                     root = tempManifest.getroot();
+                var mainActivity = platformConfig.getMainAndroidActivityNode(root);
 
                 configItems.forEach( function (item) {
-                    // if parent is not found on the root, child/grandchild nodes are searched
-                    var parentEl = root.find(item.parent) || root.find('*/' + item.parent),
-                        data = item.data,
+                    
+                    var parentEl;
+                    if (item.parent === "__cordovaMainActivity__") {
+                        parentEl = mainActivity;
+                    } else {
+                        // if parent is not found on the root, child/grandchild nodes are searched
+                        parentEl = root.find(item.parent) || root.find('*/' + item.parent);
+                    }
+                    
+                    var data = item.data,
                         childSelector = item.destination,
                         childEl;
 
