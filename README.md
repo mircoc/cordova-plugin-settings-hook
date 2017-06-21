@@ -8,7 +8,7 @@ Cordova plugin helpful to modify Android and iOS settings with config.xml parame
 Based on the work of [Devin Jett](https://github.com/djett) and [Diego Netto](https://github.com/diegonetto) on [generator-ionic](https://github.com/diegonetto/generator-ionic) with hook [update_platform_config.js](https://github.com/diegonetto/generator-ionic/blob/master/templates/hooks/after_prepare/update_platform_config.js)
 Removed dependency to other npm packages, so it can be installed as a Cordova plugin adding it to your config.xml:
 ```
-<plugin name="cordova-plugin-settings-hook" spec="~0.2.4" />
+<plugin name="cordova-plugin-settings-hook" spec="~0" />
 ```
 
 This hook updates platform configuration files based on preferences and config-file data defined in config.xml.
