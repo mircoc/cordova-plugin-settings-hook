@@ -74,7 +74,7 @@ module.exports = function(context) {
         platforms = context.requireCordovaModule("../platforms/platforms"),
         rootdir = cordova_util.isCordova(),
         et = context.requireCordovaModule('elementtree'),
-        plist = context.requireCordovaModule('plist');
+        plist = require('plist');
 
     var platformConfig = (function(){
         /*  Global object that defines the available custom preferences for each platform.

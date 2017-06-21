@@ -9,6 +9,9 @@
       "ios"
     ]
   },
+  "dependencies": {
+    "plist": "^2.1.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mircoc/cordova-plugin-settings-hook.git"
