@@ -89,7 +89,8 @@ module.exports = function(context) {
                 'android-launchMode': {target: 'AndroidManifest.xml', parent: "__cordovaMainActivity__", destination: 'android:launchMode'},
                 'android-theme': {target: 'AndroidManifest.xml', parent: "__cordovaMainActivity__", destination: 'android:theme'},
                 'android-windowSoftInputMode': {target: 'AndroidManifest.xml', parent: "__cordovaMainActivity__", destination: 'android:windowSoftInputMode'},
-                'android-applicationName': {target: 'AndroidManifest.xml', parent: 'application', destination: 'android:name'}
+                'android-applicationName': {target: 'AndroidManifest.xml', parent: 'application', destination: 'android:name'},
+                'android-allowBackup': {target: 'AndroidManifest.xml', parent: 'application', destination: 'android:allowBackup'}
             },
             'ios': {}
         };
