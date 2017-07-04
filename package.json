@@ -9,6 +9,10 @@
       "ios"
     ]
   },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "postversion": "git push --tags && npm publish"
+  },
   "dependencies": {
     "plist": "^2.1.0"
   },
@@ -26,5 +30,9 @@
   "bugs": {
     "url": "https://github.com/mircoc/cordova-plugin-settings-hook/issues"
   },
-  "homepage": "https://github.com/mircoc/cordova-plugin-settings-hook"
+  "homepage": "https://github.com/mircoc/cordova-plugin-settings-hook",
+  "devDependencies": {
+    "cross-env": "^5.0.1",
+    "webpack": "^3.0.0"
+  }
 }

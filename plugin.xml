@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="cordova-plugin-settings-hook"
-      version="0.2.4">
+      version="0.2.7">
 
     <name>Cordova Settings Hooks</name>
     <description>Cordova plugin helpful to modify Android and iOS settings with config.xml parameters.
