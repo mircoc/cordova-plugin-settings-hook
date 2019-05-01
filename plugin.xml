@@ -12,6 +12,6 @@
     <repo>https://github.com/mircoc/cordova-plugin-settings-hook.git</repo>
     <issue>https://github.com/mircoc/cordova-plugin-settings-hook/issues</issue>
 
-    <hook src="updatePlatformConfig.js" type="after_prepare" />
+    <hook src="src/updatePlatformConfig.js" type="after_prepare" />
     
 </plugin>
