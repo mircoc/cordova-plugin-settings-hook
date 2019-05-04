@@ -68,6 +68,24 @@ const fs = require("fs"),
       et = require("elementtree"),
       plist = require('plist');
 
+// thanks to dpa99c/cordova-custom-config !
+const manifestPath = {
+    cordovaAndroid6: 'platforms/android/AndroidManifest.xml',
+    cordovaAndroid7: 'platforms/android/app/src/main/AndroidManifest.xml'
+};
+function getAndroidManifestFilePath(rootdir) {
+    var cordovaAndroid6Path = path.join(rootdir, manifestPath.cordovaAndroid6);
+    var cordovaAndroid7Path = path.join(rootdir, manifestPath.cordovaAndroid7);
+    
+    if(fs.existsSync(cordovaAndroid7Path)){
+        return cordovaAndroid7Path;
+    }else if(fs.existsSync(cordovaAndroid6Path)){
+        return cordovaAndroid6Path;
+    }else{
+        throw "Can't find AndroidManifest.xml in platforms/Android";
+    }
+}
+
 module.exports = function(context) {
 
     const cordovaUtil = context.requireCordovaModule('cordova-lib/src/cordova/util');
@@ -261,7 +279,7 @@ module.exports = function(context) {
                             targetFile = path.join(platformPath, projectName, projectName + '-Info.plist');
                             platformConfig.updateIosPlist(targetFile, configItems);
                         } else if (platform === 'android' && targetFileName === 'AndroidManifest.xml') {
-                            targetFile = path.join(platformPath, targetFileName);
+                            targetFile = getAndroidManifestFilePath(rootdir);
                             platformConfig.updateAndroidManifest(targetFile, configItems);
                         }
                     }
